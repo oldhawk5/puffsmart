@@ -1371,6 +1371,33 @@ th{
 }
 
 
+.swiper-pagination {
+  position: absolute;
+  bottom: 20px !important;
+}
+
+.swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--primary-color);
+}
+
+/* Fade effect styles */
+.swiper-fade .swiper-slide {
+  opacity: 0 !important;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.swiper-fade .swiper-slide-active {
+  opacity: 1 !important;
+}
+
+
 /* 4.4 Product
 /*----------------------------------------------*/
 .card-concern{
