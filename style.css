@@ -1183,6 +1183,8 @@ th{
   background-color: #000000;
   border: 1px solid rgba(255,255,255,0.1);
   --bs-dropdown-zindex: 99999;
+  max-height: 70vh;
+  overflow-y: auto;
 }
 .dropdown-item.active, .dropdown-item:active {
   color: var(--bs-dropdown-link-active-color);
@@ -1197,6 +1199,33 @@ th{
   background-color: rgba(255,255,255,0.05);
 }
 
+
+.dropdown-header {
+  color: var(--gold-color);
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  padding: 8px 16px;
+}
+
+.dropdown-divider {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  margin: 8px 0;
+}
+
+/* Make menu items more compact for space */
+.navbar-nav .nav-link {
+  padding: 8px 0;
+  font-size: 0.3rem;
+}
+
+@media (min-width: 992px) {
+  /* Adjustments for desktop */
+  .navbar-nav .nav-item .nav-link {
+    padding: 10px 0;
+    margin-right: 12px !important;
+  }
+}
 
 .cart-dropdown .dropdown-menu,
 .wishlist-dropdown .dropdown-menu{
@@ -1368,6 +1397,29 @@ th{
   object-fit: contain;
 }
 
+/* Add to your style.css file */
+#categories .card {
+  overflow: hidden;
+  height: 300px;
+}
+
+#categories .card img {
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+#categories .card:hover img {
+  transform: scale(1.05);
+}
+
+#categories h6 {
+  transition: background-color 0.3s ease;
+}
+
+#categories .card:hover h6 {
+  background-color: var(--gold-color) !important;
+}
 
 /* For maintaining aspect ratio on responsive images */
 .image-holder {
