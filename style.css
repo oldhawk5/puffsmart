@@ -1212,7 +1212,42 @@ th{
   border-top: 1px solid rgba(255,255,255,0.1);
   margin: 8px 0;
 }
+/* CSS for multi-level dropdown menu */
+/* .dropdown-submenu {
+  position: relative;
+} */
 
+
+/* Show dropdown on hover for desktop */
+@media (min-width: 992px) {
+  .dropdown-submenu:hover > .dropdown-menu {
+    display: block;
+  }
+  
+  .dropdown-submenu > .dropdown-item:after {
+    display: block;
+    content: " ";
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #ccc;
+    margin-top: 5px;
+    margin-right: -10px;
+  }
+}
+
+
+/* For mobile devices - enable click to open submenus */
+@media (max-width: 991.98px) {
+  .dropdown-submenu .dropdown-menu {
+    left: 0;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+}
 /* Make menu items more compact for space */
 .navbar-nav .nav-link {
   padding: 8px 0;
@@ -1225,6 +1260,22 @@ th{
     padding: 10px 0;
     margin-right: 12px !important;
   }
+}
+
+.dropdown-submenu {
+  position: relative;
+  right: auto !important;
+  bottom: auto !important;
+  overflow: visible !important;
+  width: auto !important;
+  height: auto !important;
+  background: transparent;
+}
+
+.dropdown-submenu .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -1px;
 }
 
 .cart-dropdown .dropdown-menu,
@@ -1244,6 +1295,67 @@ th{
   .cart-dropdown .dropdown-menu,
   .wishlist-dropdown .dropdown-menu{
     min-width: fit-content;
+  }
+}
+
+/* Dropdown menu styling */
+/* .dropdown-menu {
+  position: absolute;
+  overflow: auto;
+  width: auto;
+  z-index: 99999;
+  border: 0.8px solid rgb(227, 227, 227);
+  box-shadow: none;
+} */
+
+/* Add this to your existing CSS file */
+
+/* Fix submenu positioning for desktop */
+@media (min-width: 992px) {
+  .dropdown-submenu {
+    position: relative !important;
+  }
+  
+  .dropdown-submenu > .dropdown-menu {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    margin-top: 0;
+    border-radius: 0.25rem;
+    z-index: 1001;
+  }
+  
+  /* Add arrow indicator for items with submenus */
+  .dropdown-submenu > .dropdown-item::after {
+    display: block;
+    content: "";
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: rgba(255, 255, 255, 0.7);
+    margin-top: 5px;
+    margin-right: -10px;
+  }
+  
+  /* Change arrow color on hover */
+  .dropdown-submenu > .dropdown-item:hover::after {
+    border-left-color: var(--gold-color);
+  }
+}
+
+/* Ensure dropdowns don't get hidden by overflow */
+.dropdown-menu {
+  overflow: visible !important;
+}
+
+/* Fix mobile submenu appearance */
+@media (max-width: 991.98px) {
+  .dropdown-submenu > .dropdown-menu {
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    margin-left: 1rem;
   }
 }
 

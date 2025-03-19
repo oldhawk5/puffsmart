@@ -101,6 +101,8 @@
     initProductQty();
     countdownTimer();
 
+    
+
     /* Video */
     var $videoSrc;
     $(".play-btn").click(function () {
@@ -175,6 +177,7 @@
     //   },
     //   loop: true, // Enable continuous loop
     // });
+    
 
     var testimonialSwiper = new Swiper(".testimonial-swiper", {
       slidesPerView: 1,
@@ -196,6 +199,31 @@
       },
     });
   }); // End of a document ready
+
+  // Add this to your existing JavaScript file or include it in a script tag
+document.addEventListener('DOMContentLoaded', function() {
+  // Handle click on dropdown submenu toggle
+  document.querySelectorAll('.dropdown-submenu > .dropdown-item').forEach(function(element) {
+    element.addEventListener('click', function(e) {
+      if (window.innerWidth < 992) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        // Toggle submenu
+        let nextEl = this.nextElementSibling;
+        if (nextEl && nextEl.classList.contains('dropdown-menu')) {
+          // If visible, hide it
+          if (nextEl.style.display == 'block') {
+            nextEl.style.display = 'none';
+          } else {
+            // Otherwise, show it
+            nextEl.style.display = 'block';
+          }
+        }
+      }
+    });
+  });
+});
 
   window.addEventListener("load", function () {
     const preloader = document.getElementById("preloader");
