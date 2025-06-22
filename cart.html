@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Puff Smart - Premium Hookah Seller</title>
+    <title>Your Cart - Puff Smart</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,9 +17,156 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+      .cart-item-image {
+        height: 100px;
+        width: 100px;
+        object-fit: contain;
+      }
+      
+      .cart-quantity-btn {
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #dee2e6;
+        background-color: white;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      
+      .cart-quantity-btn:hover {
+        background-color: #f8f9fa;
+      }
+      
+      .cart-quantity-input {
+        width: 50px;
+        text-align: center;
+        border: 1px solid #dee2e6;
+        border-radius: 0;
+      }
+      
+      .cart-remove-btn {
+        color: #dc3545;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      
+      .cart-remove-btn:hover {
+        color: #b02a37;
+      }
+      
+      .empty-cart {
+        text-align: center;
+        padding: 50px 0;
+      }
+      
+      .empty-cart-icon {
+        font-size: 5rem;
+        color: #dee2e6;
+        margin-bottom: 20px;
+      }
+      
+      .order-summary {
+        background-color: #f8f9fa;
+        padding: 30px;
+        border-radius: 10px;
+      }
+      
+      .promo-code {
+        margin-bottom: 20px;
+      }
+      
+      .promo-code-input {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+      
+      .promo-code-btn {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+      
+      .summary-item {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+      }
+      
+      .summary-total {
+        font-weight: 700;
+        font-size: 1.2rem;
+        border-top: 1px solid #dee2e6;
+        padding-top: 10px;
+        margin-top: 10px;
+      }
+      
+      .checkout-btn {
+        background-color: var(--gold-color);
+        color: white;
+        font-weight: 600;
+        padding: 15px;
+        margin-top: 20px;
+        transition: all 0.3s;
+      }
+      
+      .checkout-btn:hover {
+        background-color: #000000;
+      }
+      
+      .continue-shopping {
+        color: var(--black-color);
+        text-decoration: none;
+        font-weight: 500;
+        display: inline-flex;
+        align-items: center;
+        margin-top: 20px;
+        transition: all 0.2s;
+      }
+      
+      .continue-shopping:hover {
+        color: var(--gold-color);
+      }
+      
+      .continue-shopping i {
+        margin-right: 5px;
+      }
+      
+      @media (max-width: 767.98px) {
+        .cart-item {
+          flex-direction: column;
+          text-align: center;
+        }
+        
+        .cart-item-details {
+          margin-top: 15px;
+        }
+        
+        .cart-item-price {
+          margin: 10px 0;
+        }
+        
+        .cart-quantity {
+          justify-content: center;
+        }
+      }
+      input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* For Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+    </style>
   </head>
   <body>
-    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+ <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
       <symbol id="search" xmlns="http://www.w3.org/2000/symbolsvg" viewBox="0 0 24 24">
         <path fill="currentColor" fill-rule="evenodd"
           d="M11.5 2.75a8.75 8.75 0 1 0 0 17.5a8.75 8.75 0 0 0 0-17.5M1.25 11.5c0-5.66 4.59-10.25 10.25-10.25S21.75 5.84 21.75 11.5c0 2.56-.939 4.902-2.491 6.698l3.271 3.272a.75.75 0 1 1-1.06 1.06l-3.272-3.271A10.21 10.21 0 0 1 11.5 21.75c-5.66 0-10.25-4.59-10.25-10.25"
@@ -500,445 +647,244 @@
 
     </header>
 
-    <div class="container">
-        <div class="product-container">
-            <div class="row">
-                <!-- Product Images -->
-                <div class="col-lg-6 col-md-12">
-                    <div class="product-image-gallery">
-                        <img src="images/landing/hookah_product.jpg" alt="Premium Glass Hookah Set" class="main-image" id="main-product-image">
-                        <div class="thumbnail-container">
-                            <img src="images/landing/hookah_product1.jpg" alt="Premium Glass Hookah Set Thumbnail 1" class="thumbnail active" onclick="changeImage(this, 'images/landing/hookah_product.jpg')">
-                            <img src="images/landing/hookah_product2.jpg" alt="Premium Glass Hookah Set Thumbnail 2" class="thumbnail" onclick="changeImage(this, 'images/landing/hookah_product1.jpg')">
-                            <img src="images/landing/hookah_product4.jpg" alt="Premium Glass Hookah Set Thumbnail 3" class="thumbnail" onclick="changeImage(this, 'images/landing/hookah_product2.jpg')">
-                            <img src="images/landing/hookah_product3.jpg" alt="Premium Glass Hookah Set Thumbnail 4" class="thumbnail" onclick="changeImage(this, 'images/landing/hookah_product3.jpg')">
-                        </div>
+    <!-- Main Content -->
+    <div class="container my-5">
+      <h1 class="mb-4">Your Shopping Cart</h1>
+      
+      <!-- Cart Items Section -->
+      <div class="row">
+        <div class="col-lg-8">
+          <!-- If cart has items -->
+          <div class="cart-items">
+            <div class="card mb-4">
+              <div class="card-body">
+                <!-- Cart Item 1 -->
+                <div class="row align-items-center mb-4">
+                  <div class="col-md-2 col-4">
+                    <img src="images/landing/hookah_product.jpg" alt="Premium Glass Hookah Set" class="cart-item-image">
+                  </div>
+                  <div class="col-md-4 col-8">
+                    <h5 class="mb-0">Premium Glass Hookah Set</h5>
+                    <p class="text-muted mb-0">Al Fakher</p>
+                    <small class="text-muted">Color: Amber Gold</small>
+                  </div>
+                  <div class="col-md-2 col-4 mt-3 mt-md-0">
+                    <h5 class="mb-0">$870.00</h5>
+                  </div>
+                  <div class="col-md-3 col-6 mt-3 mt-md-0">
+                    <div class="d-flex align-items-center">
+                      <button class="cart-quantity-btn" onclick="updateQuantity(1, -1)">-</button>
+                      <input type="number" class="form-control cart-quantity-input" value="1" min="1">
+                      <button class="cart-quantity-btn" onclick="updateQuantity(1, 1)">+</button>
                     </div>
+                  </div>
+                  <div class="col-md-1 col-2 mt-3 mt-md-0 text-end">
+                    <i class="fas fa-trash cart-remove-btn" onclick="removeItem(1)"></i>
+                  </div>
                 </div>
                 
-                <!-- Product Details -->
-                <div class="col-lg-6 col-md-12">
-                    <span class="availability in-stock"><i class="fas fa-check-circle"></i> In Stock</span>
-                    <h1 class="product-title">Premium Glass Hookah Set</h1>
-                    <p class="product-brand">Al Fakher</p>
-                    
-                    <div class="product-rating">
-                        <span class="rating-stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </span>
-                        <span class="rating-count">4.5 (128 reviews)</span>
+                <hr>
+                
+                <!-- Cart Item 2 -->
+                <div class="row align-items-center mb-4">
+                  <div class="col-md-2 col-4">
+                    <img src="images/landing/landing7.jpg" alt="Al Fakher Double Apple" class="cart-item-image">
+                  </div>
+                  <div class="col-md-4 col-8">
+                    <h5 class="mb-0">Al Fakher Double Apple</h5>
+                    <p class="text-muted mb-0">Premium Flavor</p>
+                    <small class="text-muted">Size: 250g</small>
+                  </div>
+                  <div class="col-md-2 col-4 mt-3 mt-md-0">
+                    <h5 class="mb-0">$24.99</h5>
+                  </div>
+                  <div class="col-md-3 col-6 mt-3 mt-md-0">
+                    <div class="d-flex align-items-center">
+                      <button class="cart-quantity-btn" onclick="updateQuantity(2, -1)">-</button>
+                      <input type="number" class="form-control cart-quantity-input" value="2" min="1">
+                      <button class="cart-quantity-btn" onclick="updateQuantity(2, 1)">+</button>
                     </div>
-                    
-                    <div class="mb-4">
-                        <span class="price">$870</span>
-                        <span class="original-price">$966</span>
-                        <span class="discount-badge">10% OFF</span>
-                    </div>
-                    
-                    <div class="product-details">
-                        <p>Experience the ultimate hookah session with our Premium Glass Hookah Set. Crafted with high-quality materials and exquisite design, this hookah set offers a smooth and enjoyable smoking experience.</p>
-                        
-                        <div class="detail-item">
-                            <div class="detail-title">Materials</div>
-                            <div class="detail-text">Hand-blown glass, stainless steel, and premium silicone</div>
-                        </div>
-                        
-                        <div class="detail-item">
-                            <div class="detail-title">Height</div>
-                            <div class="detail-text">23 inches (58.4 cm)</div>
-                        </div>
-                        
-                        <div class="detail-item">
-                            <div class="detail-title">Base Diameter</div>
-                            <div class="detail-text">8 inches (20.3 cm)</div>
-                        </div>
-                        
-                        <div class="detail-item">
-                            <div class="detail-title">Hose Length</div>
-                            <div class="detail-text">72 inches (182.9 cm)</div>
-                        </div>
-                    </div>
-                    
-                    <div class="mb-4">
-                        <div class="detail-title mb-2">Color</div>
-                        <div class="color-options">
-                            <div class="color-option active" style="background-color: #f39c12;" title="Amber Gold" onclick="selectColor(this)"></div>
-                            <div class="color-option" style="background-color: #3498db;" title="Royal Blue" onclick="selectColor(this)"></div>
-                            <div class="color-option" style="background-color: #2ecc71;" title="Emerald Green" onclick="selectColor(this)"></div>
-                            <div class="color-option" style="background-color: #9b59b6;" title="Purple Haze" onclick="selectColor(this)"></div>
-                            <div class="color-option" style="background-color: #e74c3c;" title="Ruby Red" onclick="selectColor(this)"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="quantity-selector mb-4">
-                        <div class="detail-title mb-2">Quantity</div>
-                        <button class="quantity-btn" onclick="decrementQuantity()">-</button>
-                        <input type="number" class="quantity-input" value="1" min="1" id="quantity-input">
-                        <button class="quantity-btn" onclick="incrementQuantity()">+</button>
-                    </div>
-                    
-                    <div class="d-flex gap-3 mb-4">
-                        <button class="btn btn-add-cart"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-                        <button class="btn btn-wishlist"><i class="far fa-heart"></i> Wishlist</button>
-                    </div>
-                    
-                    <div class="social-share">
-                        <span class="detail-title me-2">Share:</span>
-                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-pinterest"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                    </div>
+                  </div>
+                  <div class="col-md-1 col-2 mt-3 mt-md-0 text-end">
+                    <i class="fas fa-trash cart-remove-btn" onclick="removeItem(2)"></i>
+                  </div>
                 </div>
+                
+                <hr>
+                
+                <!-- Cart Item 3 -->
+                <div class="row align-items-center">
+                  <div class="col-md-2 col-4">
+                    <img src="images/landing/landing8.jpg" alt="Premium Charcoal" class="cart-item-image">
+                  </div>
+                  <div class="col-md-4 col-8">
+                    <h5 class="mb-0">Premium Coconut Charcoal</h5>
+                    <p class="text-muted mb-0">COCOYAYA</p>
+                    <small class="text-muted">Size: 1kg</small>
+                  </div>
+                  <div class="col-md-2 col-4 mt-3 mt-md-0">
+                    <h5 class="mb-0">$18.99</h5>
+                  </div>
+                  <div class="col-md-3 col-6 mt-3 mt-md-0">
+                    <div class="d-flex align-items-center">
+                      <button class="cart-quantity-btn" onclick="updateQuantity(3, -1)">-</button>
+                      <input type="number" class="form-control cart-quantity-input" value="1" min="1">
+                      <button class="cart-quantity-btn" onclick="updateQuantity(3, 1)">+</button>
+                    </div>
+                  </div>
+                  <div class="col-md-1 col-2 mt-3 mt-md-0 text-end">
+                    <i class="fas fa-trash cart-remove-btn" onclick="removeItem(3)"></i>
+                  </div>
+                </div>
+              </div>
             </div>
-        </div>
-        
-        <!-- Product Tabs -->
-        <div class="product-tabs">
-            <ul class="nav nav-tabs" id="productTabs" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="description-tab" data-bs-toggle="tab" data-bs-target="#description" type="button" role="tab" aria-controls="description" aria-selected="true">Description</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="specifications-tab" data-bs-toggle="tab" data-bs-target="#specifications" type="button" role="tab" aria-controls="specifications" aria-selected="false">Specifications</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews" type="button" role="tab" aria-controls="reviews" aria-selected="false">Reviews (128)</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="shipping-tab" data-bs-toggle="tab" data-bs-target="#shipping" type="button" role="tab" aria-controls="shipping" aria-selected="false">Shipping & Returns</button>
-                </li>
-            </ul>
             
-            <div class="tab-content" id="productTabsContent">
-                <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
-                    <h4>Premium Glass Hookah Set</h4>
-                    <p>Elevate your hookah experience with our Premium Glass Hookah Set from Al Fakher. This beautifully crafted hookah combines traditional design elements with modern technology to deliver an unparalleled smoking experience.</p>
-                    
-                    <p>The Premium Glass Hookah Set features a hand-blown glass base with intricate detailing that showcases the artistry of our skilled craftsmen. The stainless steel stem is designed for optimal airflow, ensuring a smooth and consistent draw every time.</p>
-                    
-                    <p>Our hookah comes complete with a premium silicone hose that is not only durable but also enhances the flavor profile of your favorite shisha. The bowl is designed to distribute heat evenly, allowing for a longer-lasting and more enjoyable session.</p>
-                    
-                    <div class="row mt-5">
-                        <div class="col-md-4 col-6">
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <i class="fas fa-medal"></i>
-                                </div>
-                                <h5 class="feature-title">Premium Quality</h5>
-                                <p class="feature-text">Made with the finest materials for durability and performance</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-6">
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <i class="fas fa-wind"></i>
-                                </div>
-                                <h5 class="feature-title">Smooth Draw</h5>
-                                <p class="feature-text">Engineered for optimal airflow and a luxurious experience</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-6">
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <i class="fas fa-paint-brush"></i>
-                                </div>
-                                <h5 class="feature-title">Artistic Design</h5>
-                                <p class="feature-text">Handcrafted with attention to detail and aesthetic appeal</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-6">
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <i class="fas fa-clock"></i>
-                                </div>
-                                <h5 class="feature-title">Long Sessions</h5>
-                                <p class="feature-text">Designed for extended use with consistent performance</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-6">
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <i class="fas fa-tools"></i>
-                                </div>
-                                <h5 class="feature-title">Easy Assembly</h5>
-                                <p class="feature-text">Simple to set up and clean for hassle-free enjoyment</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-6">
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <i class="fas fa-leaf"></i>
-                                </div>
-                                <h5 class="feature-title">Flavor Enhancing</h5>
-                                <p class="feature-text">Materials chosen to preserve and enhance shisha flavors</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="tab-pane fade" id="specifications" role="tabpanel" aria-labelledby="specifications-tab">
-                    <h4>Technical Specifications</h4>
-                    <table class="table table-striped">
-                        <tbody>
-                            <tr>
-                                <th scope="row">Brand</th>
-                                <td>Al Fakher</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Model</th>
-                                <td>Premium Glass Series X1</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Materials</th>
-                                <td>Hand-blown glass, stainless steel, silicone</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Height</th>
-                                <td>23 inches (58.4 cm)</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Base Diameter</th>
-                                <td>8 inches (20.3 cm)</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Stem Material</th>
-                                <td>304 Stainless Steel</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Hose Length</th>
-                                <td>72 inches (182.9 cm)</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Hose Material</th>
-                                <td>Food-grade silicone with stainless steel handle</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Bowl Type</th>
-                                <td>Phunnel design, ceramic material</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Purge Valve</th>
-                                <td>Yes, 360° rotating</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Number of Hose Ports</th>
-                                <td>1 (expandable to 4)</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Weight</th>
-                                <td>4.8 lbs (2.2 kg)</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Package Includes</th>
-                                <td>Hookah base, stem, silicone hose, ceramic bowl, tongs, cleaning brush set, instruction manual</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Warranty</th>
-                                <td>2-year manufacturer's warranty</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    
-                    <h4 class="mt-5">Features</h4>
-                    <ul class="features-list">
-                        <li>Precision-engineered diffuser for smooth draws and reduced noise</li>
-                        <li>Heat management system compatible</li>
-                        <li>Wide base design for enhanced stability</li>
-                        <li>Leak-proof connection system</li>
-                        <li>Double-sealed purge valve</li>
-                        <li>Washable silicone hose</li>
-                        <li>Anti-slip base padding</li>
-                        <li>LED light compatible (LED kit sold separately)</li>
-                        <li>Custom carrying case included</li>
-                        <li>Interchangeable parts compatible with most standard hookah accessories</li>
-                    </ul>
-                </div>
-                
-                <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
-                    <div class="row mb-4">
-                        <div class="col-md-4">
-                            <div class="text-center">
-                                <h2 class="display-4 fw-bold">4.5</h2>
-                                <div class="rating-stars mb-2">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
-                                </div>
-                                <p>Based on 128 reviews</p>
-                            </div>
-                            
-                            <div class="mt-4">
-                                <div class="d-flex align-items-center mb-2">
-                                    <span class="me-2">5</span>
-                                    <div class="progress flex-grow-1" style="height: 8px;">
-                                        <div class="progress-bar bg-success" role="progressbar" style="width: 75%"></div>
-                                    </div>
-                                    <span class="ms-2">96</span>
-                                </div>
-                                <div class="d-flex align-items-center mb-2">
-                                    <span class="me-2">4</span>
-                                    <div class="progress flex-grow-1" style="height: 8px;">
-                                        <div class="progress-bar bg-success" role="progressbar" style="width: 15%"></div>
-                                    </div>
-                                    <span class="ms-2">19</span>
-                                </div>
-                                <div class="d-flex align-items-center mb-2">
-                                    <span class="me-2">3</span>
-                                    <div class="progress flex-grow-1" style="height: 8px;">
-                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 6%"></div>
-                                    </div>
-                                    <span class="ms-2">8</span>
-                                </div>
-                                <div class="d-flex align-items-center mb-2">
-                                    <span class="me-2">2</span>
-                                    <div class="progress flex-grow-1" style="height: 8px;">
-                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 3%"></div>
-                                    </div>
-                                    <span class="ms-2">4</span>
-                                </div>
-                                <div class="d-flex align-items-center">
-                                    <span class="me-2">1</span>
-                                    <div class="progress flex-grow-1" style="height: 8px;">
-                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 1%"></div>
-                                    </div>
-                                    <span class="ms-2">1</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-8">
-                            <h4 class="mb-4">Customer Reviews</h4>
-                            <div class="review-item">
-                                <div class="review-header">
-                                    <span class="review-author">Michael S.</span>
-                                    <span class="review-date">January 15, 2025</span>
-                                </div>
-                                <div class="rating-stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <div class="review-text">
-                                    <strong>Best hookah I've ever owned!</strong>
-                                    <p>After trying many different brands over the years, this Premium Glass Hookah Set is simply on another level. The craftmanship is exceptional, and the smoking experience is incredibly smooth. The draw is perfect - not too tight or too loose. I've had it for about three months now, and it's still performing like new. The glass base is stunning and has become a conversation piece whenever friends come over.</p>
-                                </div>
-                            </div>
-                            
-                            <div class="review-item">
-                                <div class="review-header">
-                                    <span class="review-date">January 20, 2025</span>
-                                </div>
-                                <div class="rating-stars">
-                                    &#9733;&#9733;&#9733;&#9733;&#9733;
-                                </div>
-                                <p class="review-text">Absolutely love this product! High quality and great value for money.</p>
-                            </div>
-                            
-                            <div class="review-item">
-                                <div class="review-header">
-                                    <span class="review-author">Sophia W.</span>
-                                    <span class="review-date">February 10, 2025</span>
-                                </div>
-                                <div class="rating-stars">
-                                    &#9733;&#9733;&#9733;&#9733;&#9734;
-                                </div>
-                                <p class="review-text">Very good product but the delivery took longer than expected.</p>
-                            </div>
-                            
-                            <div class="review-item">
-                                <div class="review-header">
-                                    <span class="review-author">David R.</span>
-                                    <span class="review-date">March 2, 2025</span>
-                                </div>
-                                <div class="rating-stars">
-                                    &#9733;&#9733;&#9733;&#9734;&#9734;
-                                </div>
-                                <p class="review-text">The product is decent but had minor scratches upon arrival.</p>
-                            </div>
-                            
-                            <h5 class="mt-4">Add a Review</h5>
-                            <form>
-                                <div class="mb-3">
-                                    <label for="review-name" class="form-label">Name</label>
-                                    <input type="text" class="form-control" id="review-name" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="review-rating" class="form-label">Rating</label>
-                                    <select class="form-control" id="review-rating" required>
-                                        <option value="5">5 - Excellent</option>
-                                        <option value="4">4 - Very Good</option>
-                                        <option value="3">3 - Good</option>
-                                        <option value="2">2 - Fair</option>
-                                        <option value="1">1 - Poor</option>
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="review-text" class="form-label">Review</label>
-                                    <textarea class="form-control" id="review-text" rows="4" required></textarea>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Submit Review</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <a href="index.html" class="continue-shopping">
+                <i class="fas fa-arrow-left"></i> Continue Shopping
+              </a>
+              <button class="btn btn-outline-secondary" onclick="updateCart()">Update Cart</button>
             </div>
+          </div>
+          
+          <!-- If cart is empty (hidden by default) -->
+          <div class="empty-cart" style="display: none;">
+            <div class="empty-cart-icon">
+              <i class="fas fa-shopping-cart"></i>
+            </div>
+            <h3>Your cart is empty</h3>
+            <p>Looks like you haven't added any products to your cart yet.</p>
+            <a href="index.html" class="btn btn-primary mt-3">Start Shopping</a>
+          </div>
         </div>
         
-        <!-- Related Products Section -->
-        <div class="related-products">
-            <h3 class="related-title">Related Products</h3>
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="card">
-                        <img src="images/landing/landing7.jpg" alt="Product 1" class="card-img-top">
-                        <div class="card-body">
-                            <h5 class="card-title">Glass Hookah Set</h5>
-                            <p class="card-brand">Premium Brand</p>
-                            <p class="card-price">$79.99</p>
-                            <button class="btn btn-add-cart">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-3">
-                    <div class="card">
-                        <img src="images/landing/landing8.jpg" alt="Product 2" class="card-img-top">
-                        <div class="card-body">
-                            <h5 class="card-title">Modern Hookah Kit</h5>
-                            <p class="card-brand">Luxury Brand</p>
-                            <p class="card-price">$99.99</p>
-                            <button class="btn btn-add-cart">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-3">
-                    <div class="card">
-                        <img src="images/landing/landing5.jpg" alt="Product 3" class="card-img-top">
-                        <div class="card-body">
-                            <h5 class="card-title">Classic Hookah Set</h5>
-                            <p class="card-brand">Traditional Brand</p>
-                            <p class="card-price">$59.99</p>
-                            <button class="btn btn-add-cart">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
+        <!-- Order Summary Section -->
+        <div class="col-lg-4">
+          <div class="order-summary">
+            <h4 class="mb-4">Order Summary</h4>
+            
+            <!-- Promo Code Input -->
+            <div class="promo-code">
+              <div class="input-group">
+                <input type="text" class="form-control promo-code-input" placeholder="Promo Code">
+                <button class="btn btn-outline-secondary promo-code-btn" type="button">Apply</button>
+              </div>
             </div>
+            
+            <!-- Summary Details -->
+            <div class="summary-item">
+              <span>Subtotal</span>
+              <span>$938.97</span>
+            </div>
+            <div class="summary-item">
+              <span>Shipping</span>
+              <span>$15.00</span>
+            </div>
+            <div class="summary-item">
+              <span>Tax</span>
+              <span>$47.00</span>
+            </div>
+            <div class="summary-item summary-total">
+              <span>Total</span>
+              <span>$1,000.97</span>
+            </div>
+            
+            <!-- Checkout Button -->
+            <button class="btn checkout-btn w-100" onclick="window.location.href='checkout.html'; return false;">Proceed to Checkout</button>
+            
+            <!-- Payment Icons -->
+            <div class="text-center mt-4">
+              <small class="text-muted d-block mb-2">We Accept:</small>
+              <div class="d-flex justify-content-center gap-2">
+                <img src="images/visa.jpg" alt="Visa" height="30">
+                <img src="images/mastercard.jpg" alt="Mastercard" height="30">
+                <img src="images/paypal.jpg" alt="PayPal" height="30">
+              </div>
+            </div>
+          </div>
+          
+          <!-- Save for Later Items (can be expanded later) -->
+          <div class="mt-4">
+            <h5>Recently Viewed</h5>
+            <div class="card mb-2">
+              <div class="card-body p-2">
+                <div class="d-flex align-items-center">
+                  <img src="images/landing/landing5.jpg" alt="Recently Viewed Item" style="width: 60px; height: 60px; object-fit: contain; margin-right: 10px;">
+                  <div>
+                    <h6 class="mb-0">Classic Hookah Set</h6>
+                    <p class="text-muted mb-0">$59.99</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body p-2">
+                <div class="d-flex align-items-center">
+                  <img src="images/landing/landing8.jpg" alt="Recently Viewed Item" style="width: 60px; height: 60px; object-fit: contain; margin-right: 10px;">
+                  <div>
+                    <h6 class="mb-0">Modern Hookah Kit</h6>
+                    <p class="text-muted mb-0">$99.99</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+      
+      <!-- You May Also Like Section -->
+      <div class="recommended-products mt-5">
+        <h3>You May Also Like</h3>
+        <div class="row mt-4">
+          <div class="col-md-3 col-6 mb-4">
+            <div class="card h-100">
+              <img src="images/landing/landing5.jpg" alt="Related Product" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Classic Hookah Set</h5>
+                <p class="card-text text-muted">Traditional Brand</p>
+                <p class="fw-bold">$59.99</p>
+                <button class="btn btn-primary w-100">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-6 mb-4">
+            <div class="card h-100">
+              <img src="images/landing/landing7.jpg" alt="Related Product" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Glass Hookah Set</h5>
+                <p class="card-text text-muted">Premium Brand</p>
+                <p class="fw-bold">$79.99</p>
+                <button class="btn btn-primary w-100">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-6 mb-4">
+            <div class="card h-100">
+              <img src="images/landing/landing8.jpg" alt="Related Product" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Modern Hookah Kit</h5>
+                <p class="card-text text-muted">Luxury Brand</p>
+                <p class="fw-bold">$99.99</p>
+                <button class="btn btn-primary w-100">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-6 mb-4">
+            <div class="card h-100">
+              <img src="images/landing/hookah_product.jpg" alt="Related Product" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Premium LED Hookah</h5>
+                <p class="card-text text-muted">VG Hookah</p>
+                <p class="fw-bold">$129.99</p>
+                <button class="btn btn-primary w-100">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-
-
-                 <footer id="footer" class="padding-large bg-black">
+              <footer id="footer" class="padding-large bg-black">
           <div class="container">
             <div class="row">
               <div class="footer-top-area">
@@ -1020,13 +966,71 @@
           </div>
         </div>
 
+    <!-- JavaScript -->
     <script>
-            function changeImage(thumbnail, newSrc) {
-                document.getElementById('main-product-image').src = newSrc;
-                document.querySelectorAll('.thumbnail').forEach(img => img.classList.remove('active'));
-                thumbnail.classList.add('active');
+      // Cart functionality
+      function updateQuantity(itemId, change) {
+        const inputElement = event.target.parentElement.querySelector('.cart-quantity-input');
+        let newValue = parseInt(inputElement.value) + change;
+        if (newValue < 1) newValue = 1;
+        inputElement.value = newValue;
+        
+        // For demonstration purposes, we'll just log the change
+        console.log(`Updated item ${itemId} quantity to ${newValue}`);
+      }
+      
+      function removeItem(itemId) {
+        // Find the item's row and remove it
+        const itemElement = event.target.closest('.row');
+        
+        // Animation for smooth removal
+        itemElement.style.transition = 'opacity 0.3s';
+        itemElement.style.opacity = '0';
+        
+        setTimeout(() => {
+          // Remove the element
+          itemElement.remove();
+          
+          // Check if cart is empty after removal
+          const cartItems = document.querySelectorAll('.cart-items .row');
+          if (cartItems.length === 0) {
+            document.querySelector('.cart-items').style.display = 'none';
+            document.querySelector('.empty-cart').style.display = 'block';
+          }
+          
+          // Here you would update cart totals
+          console.log(`Removed item ${itemId} from cart`);
+        }, 300);
+      }
+      
+      function updateCart() {
+        // Here you would send the updated quantities to the server
+        alert('Cart updated successfully!');
+      }
+      
+      // For mobile responsiveness
+      document.addEventListener('DOMContentLoaded', function() {
+        // Check for mobile view and adjust layout if needed
+        const adjustForMobile = () => {
+          const isMobile = window.innerWidth < 768;
+          const cartItems = document.querySelectorAll('.cart-items .row');
+          
+          cartItems.forEach(item => {
+            if (isMobile) {
+              // Mobile layout adjustments
+            } else {
+              // Desktop layout adjustments
             }
+          });
+        };
+        
+        // Initial check and listen for resize events
+        adjustForMobile();
+        window.addEventListener('resize', adjustForMobile);
+      });
     </script>
+
+    <!-- Include all your JavaScript files from productview.html -->
     <script src="js/jquery-1.11.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
