@@ -17,6 +17,118 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <style>
+    /* Best Selling Hookahs Section - Consistent Image Sizing */
+    #best-selling-items .card img {
+        width: 100%;
+        height: 250px; /* Fixed height for consistency */
+        object-fit: cover;
+        object-position: center;
+        border-radius: 8px;
+        transition: transform 0.3s ease;
+    }
+    
+    #best-selling-items .card:hover img {
+        transform: scale(1.05);
+    }
+    
+    /* Alternative option for full image visibility */
+    #best-selling-items .card img.contain-fit {
+        object-fit: contain;
+        background-color: #f8f9fa;
+    }
+    
+    /* Categories Section - Consistent Image Sizing */
+    #categories .card img {
+        width: 100%;
+        height: 300px; /* Fixed height for category cards */
+        object-fit: cover;
+        object-position: center;
+        border-radius: 12px;
+        transition: transform 0.3s ease;
+    }
+    
+    #categories .card:hover img {
+        transform: scale(1.02);
+    }
+    
+    /* Alternative option for full image visibility in categories */
+    #categories .card img.contain-fit {
+        object-fit: contain;
+        background-color: #f8f9fa;
+    }
+    
+    /* Ensure card containers have consistent structure */
+    #best-selling-items .card {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    #categories .card {
+        height: 100%;
+        overflow: hidden;
+    }
+    
+    /* Image container with loading placeholder */
+    #best-selling-items .card .image-container,
+    #categories .card .image-container {
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+        background-color: #f8f9fa;
+    }
+    
+    #best-selling-items .card .image-container::before,
+    #categories .card .image-container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+        background-size: 200% 100%;
+        animation: loading 1.5s infinite;
+        z-index: 0;
+    }
+    
+    #best-selling-items .card img[src],
+    #categories .card img[src] {
+        position: relative;
+        z-index: 1;
+    }
+    
+    @keyframes loading {
+        0% {
+            background-position: -200% 0;
+        }
+        100% {
+            background-position: 200% 0;
+        }
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 767.98px) {
+        #best-selling-items .card img {
+            height: 200px;
+        }
+        
+        #categories .card img {
+            height: 250px;
+        }
+    }
+    
+    @media (max-width: 575.98px) {
+        #best-selling-items .card img {
+            height: 180px;
+        }
+        
+        #categories .card img {
+            height: 200px;
+        }
+    }
+    </style>
   </head>
   <body>
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -652,21 +764,20 @@
         <div class="swiper product-swiper">
           <div class="swiper-wrapper">
             <div class="swiper-slide">
-              <div class="card position-relative p-4 border rounded-3">
-                <div class="position-absolute">
-                  <p class="bg-primary py-1 px-3 fs-6 text-white rounded-2">10% off</p>
-                </div>
-                <img src="images/landing/hookah_product1.jpg" class="img-fluid shadow-sm" alt="hookah product">
-                <h6 class="mt-4 mb-0 fw-bold"><a href="productview.html">Premium Glass Hookah Set</a></h6>
-                <div class="review-content d-flex">
-                  <p class="my-2 me-2 fs-6 text-black-50">Al Fakher</p>
-                  <div class="rating text-warning d-flex align-items-center">
-                    <!-- ... rating stars ... -->
-                  </div>
-                </div>
-                <span class="price text-primary fw-bold mb-2 fs-5">$870</span>
-              </div>
-            </div>
+    <div class="card position-relative p-4 border rounded-3">
+        <div class="position-absolute">
+            <p class="bg-primary py-1 px-3 fs-6 text-white rounded-2">10% off</p>
+        </div>
+        <div class="image-container">
+            <img src="images/landing/hookah_product1.jpg" class="img-fluid" alt="hookah product">
+        </div>
+        <h6 class="mt-4 mb-0 fw-bold"><a href="productview.html">Premium Glass Hookah Set</a></h6>
+        <div class="review-content d-flex">
+            <p class="my-2 me-2 fs-6 text-black-50">Al Fakher</p>
+        </div>
+        <span class="price text-primary fw-bold mb-2 fs-5">$870</span>
+    </div>
+</div>
             <div class="swiper-slide">
               <div class="card position-relative p-4 border rounded-3">
                 <img src="images/landing/hookah_product2.jpg" class="img-fluid shadow-sm" alt="hookah product">
@@ -782,15 +893,17 @@
         <div class="row">
           <!-- Hookah Collection -->
           <div class="col-md-4">
-            <div class="card mb-4 border-0 rounded-3 position-relative">
-              <a href="category.html">
+    <div class="card mb-4 border-0 rounded-3 position-relative">
+        <a href="category.html">
+            <div class="image-container">
                 <img src="images/landing/hookah_product.jpg" class="img-fluid rounded-3" alt="hookah collection">
-                <h6 class="position-absolute bottom-0 bg-primary m-4 py-2 px-3 rounded-3">
-                  <a href="category.html" class="text-white">Hookah Collection</a>
-                </h6>
-              </a>
             </div>
-          </div>
+            <h6 class="position-absolute bottom-0 bg-primary m-4 py-2 px-3 rounded-3">
+                <a href="category.html" class="text-white">Hookah Collection</a>
+            </h6>
+        </a>
+    </div>
+</div>
           
           <!-- Hookah Flavour -->
           <div class="col-md-4">
