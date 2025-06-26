@@ -19,202 +19,713 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-      .checkout-section {
-        padding: 40px 0;
+      /* Premium Checkout Page Styles */
+      :root {
+        --gold-color: #ffc107;
+        --dark-bg: #1a1a1a;
+        --light-gold: #fff3cd;
+        --gradient-gold: linear-gradient(135deg, #ffc107 0%, #ffb400 100%);
+        --gradient-dark: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+        --shadow-premium: 0 20px 60px rgba(0, 0, 0, 0.15);
+        --shadow-light: 0 8px 30px rgba(0, 0, 0, 0.08);
       }
-      
-      .form-section {
-        margin-bottom: 30px;
+
+      body {
+        font-family: 'Nunito', sans-serif;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #f8f9fa 100%);
+        position: relative;
+        overflow-x: hidden;
       }
-      
-      .form-section-title {
-        font-weight: 600;
-        font-size: 1.2rem;
+
+      body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: 
+          radial-gradient(circle at 20% 50%, rgba(255, 193, 7, 0.1) 0%, transparent 50%),
+          radial-gradient(circle at 80% 20%, rgba(255, 193, 7, 0.05) 0%, transparent 50%),
+          radial-gradient(circle at 40% 80%, rgba(0, 0, 0, 0.05) 0%, transparent 50%);
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      /* Premium Hero Section */
+      .checkout-hero {
+        background: var(--gradient-dark);
+        padding: 80px 0 60px;
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 60px;
+      }
+
+      .checkout-hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('images/landing/banner-bg.jpg') center/cover;
+        opacity: 0.1;
+        z-index: 1;
+      }
+
+      .checkout-hero::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, var(--gold-color) 0%, transparent 70%);
+        opacity: 0.05;
+        z-index: 2;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 3;
+        text-align: center;
+        color: white;
+      }
+
+      .hero-title {
+        font-size: 3rem;
+        font-weight: 800;
         margin-bottom: 20px;
-        padding-bottom: 10px;
-        border-bottom: 1px solid #dee2e6;
+        background: var(--gradient-gold);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
       }
-      
-      .form-label {
+
+      .hero-subtitle {
+        font-size: 1.2rem;
+        opacity: 0.9;
+        margin-bottom: 30px;
+        font-weight: 400;
+      }
+
+      .hero-breadcrumb {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        font-size: 1rem;
         font-weight: 500;
       }
-      
+
+      .hero-breadcrumb a {
+        color: var(--gold-color);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .hero-breadcrumb a:hover {
+        color: white;
+      }
+
+      .hero-breadcrumb .separator {
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      /* Main Container */
+      .checkout-container {
+        position: relative;
+        z-index: 1;
+        padding-bottom: 80px;
+      }
+
+      /* Premium Form Sections */
+      .checkout-form {
+        background: white;
+        border-radius: 25px;
+        padding: 40px;
+        box-shadow: var(--shadow-premium);
+        border: 1px solid rgba(255, 193, 7, 0.1);
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 30px;
+      }
+
+      .checkout-form::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: var(--gradient-gold);
+      }
+
+      .form-section {
+        margin-bottom: 40px;
+        position: relative;
+      }
+
+      .form-section:last-child {
+        margin-bottom: 0;
+      }
+
+      .form-section-title {
+        font-weight: 700;
+        font-size: 1.4rem;
+        margin-bottom: 25px;
+        padding-bottom: 15px;
+        border-bottom: 3px solid var(--light-gold);
+        color: #333;
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .form-section-title::before {
+        content: '';
+        width: 50px;
+        height: 3px;
+        background: var(--gradient-gold);
+        border-radius: 2px;
+      }
+
+      .form-section-title i {
+        color: var(--gold-color);
+        font-size: 1.2rem;
+      }
+
+      /* Enhanced Form Elements */
+      .form-label {
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 8px;
+        font-size: 0.95rem;
+        position: relative;
+      }
+
       .required-field::after {
         content: "*";
         color: #dc3545;
-        margin-left: 4px;
-      }
-      
-      .order-summary-card {
-        background-color: #f8f9fa;
-        border-radius: 10px;
-        padding: 25px;
-        position: sticky;
-        top: 20px;
-      }
-      
-      .order-summary-title {
-        font-weight: 600;
-        font-size: 1.2rem;
-        margin-bottom: 20px;
-        padding-bottom: 10px;
-        border-bottom: 1px solid #dee2e6;
-      }
-      
-      .cart-item-mini {
-        display: flex;
-        margin-bottom: 15px;
-        align-items: center;
-      }
-      
-      .cart-item-mini-image {
-        width: 60px;
-        height: 60px;
-        object-fit: contain;
-        margin-right: 15px;
-        border: 1px solid #dee2e6;
-        padding: 5px;
-        border-radius: 5px;
-      }
-      
-      .cart-item-mini-details {
-        flex-grow: 1;
-      }
-      
-      .cart-item-mini-title {
-        font-weight: 500;
-        font-size: 0.9rem;
-        margin-bottom: 5px;
-      }
-      
-      .cart-item-mini-variant {
-        font-size: 0.8rem;
-        color: #6c757d;
-      }
-      
-      .cart-item-mini-price {
-        font-weight: 500;
-        font-size: 0.9rem;
-        white-space: nowrap;
-      }
-      
-      .order-summary-row {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 10px;
-      }
-      
-      .order-summary-total {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 15px;
-        padding-top: 15px;
-        border-top: 1px solid #dee2e6;
+        margin-left: 6px;
         font-weight: 700;
-        font-size: 1.1rem;
       }
-      
-      .payment-method-option {
-        margin-bottom: 15px;
+
+      .form-control, .form-select {
+        border: 2px solid #e9ecef;
+        border-radius: 12px;
+        padding: 15px 20px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
       }
-      
-      .payment-method-option label {
-        display: flex;
-        align-items: center;
-        padding: 15px;
-        border: 1px solid #dee2e6;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: all 0.2s;
-      }
-      
-      .payment-method-option label:hover {
+
+      .form-control:focus, .form-select:focus {
         border-color: var(--gold-color);
-        background-color: #f8f9fa;
+        box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.25);
+        background: white;
+        transform: translateY(-2px);
       }
-      
-      .payment-method-option input[type="radio"]:checked + label {
-        border-color: var(--gold-color);
-        background-color: #f8f9fa;
+
+      .form-control[readonly] {
+        background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        color: #666;
       }
-      
-      .payment-method-icon {
-        margin-right: 10px;
-        height: 24px;
-      }
-      
-      .place-order-btn {
-        background-color: var(--gold-color);
-        color: white;
-        font-weight: 600;
-        padding: 15px;
-        margin-top: 20px;
-        transition: all 0.3s;
-      }
-      
-      .place-order-btn:hover {
-        background-color: #000000;
-        color: white;
-      }
-      
-      .secure-checkout-badge {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-top: 15px;
-        font-size: 0.85rem;
-        color: #6c757d;
-      }
-      
-      .secure-checkout-badge i {
-        margin-right: 5px;
-        color: #28a745;
-      }
-      
-      .breadcrumb-item a {
-        text-decoration: none;
-      }
-      
-      .section-divider {
-        margin: 30px 0;
-        border-top: 1px solid #dee2e6;
-      }
-      
-      .payment-card-details {
-        padding: 20px;
-        background-color: #f8f9fa;
-        border-radius: 5px;
-        margin-top: 15px;
-      }
-      
-      .promo-box {
+
+      /* Premium Checkbox Design */
+      .form-check {
         margin: 20px 0;
+        padding: 15px 20px;
+        background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+        border-radius: 12px;
+        border: 2px solid #e9ecef;
+        transition: all 0.3s ease;
       }
-      
+
+      .form-check:hover {
+        border-color: var(--gold-color);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-light);
+      }
+
+      .form-check-input {
+        width: 20px;
+        height: 20px;
+        margin-right: 12px;
+        border: 2px solid var(--gold-color);
+        border-radius: 4px;
+      }
+
+      .form-check-input:checked {
+        background-color: var(--gold-color);
+        border-color: var(--gold-color);
+      }
+
+      .form-check-label {
+        font-weight: 500;
+        color: #333;
+        cursor: pointer;
+      }
+
+      .form-check-label a {
+        color: var(--gold-color);
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .form-check-label a:hover {
+        text-decoration: underline;
+      }
+
+      /* Premium Order Summary */
+      .order-summary-card {
+        background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+        border-radius: 25px;
+        padding: 40px;
+        box-shadow: var(--shadow-premium);
+        position: sticky;
+        top: 100px;
+        border: 1px solid rgba(255, 193, 7, 0.1);
+        overflow: hidden;
+        position: relative;
+      }
+
+      .order-summary-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100px;
+        height: 100px;
+        background: radial-gradient(circle, rgba(255, 193, 7, 0.1) 0%, transparent 70%);
+        z-index: 0;
+      }
+
+      .order-summary-card > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      .order-summary-title {
+        font-weight: 700;
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+        text-align: center;
+        color: #333;
+        position: relative;
+        padding-bottom: 20px;
+      }
+
+      .order-summary-title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background: var(--gradient-gold);
+        border-radius: 2px;
+      }
+
       .cart-quantity-badge {
         display: inline-flex;
         align-items: center;
         justify-content: center;
+        width: 25px;
+        height: 25px;
+        background: var(--gradient-gold);
+        color: white;
+        font-size: 0.8rem;
+        font-weight: 700;
+        border-radius: 50%;
+        margin-left: 10px;
+        box-shadow: 0 3px 10px rgba(255, 193, 7, 0.4);
+      }
+
+      /* Cart Item Mini Design */
+      .cart-item-mini {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        padding: 15px;
+        background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+        border-radius: 15px;
+        border: 1px solid #e9ecef;
+        transition: all 0.3s ease;
+      }
+
+      .cart-item-mini:hover {
+        border-color: var(--gold-color);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-light);
+      }
+
+      .cart-item-mini-image {
+        width: 70px;
+        height: 70px;
+        object-fit: cover;
+        border-radius: 12px;
+        margin-right: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        border: 2px solid #fff;
+      }
+
+      .cart-item-mini-details {
+        flex-grow: 1;
+      }
+
+      .cart-item-mini-title {
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: #333;
+        margin-bottom: 5px;
+      }
+
+      .cart-item-mini-variant {
+        font-size: 0.85rem;
+        color: #666;
+        font-weight: 500;
+      }
+
+      .cart-item-mini-price {
+        font-weight: 700;
+        font-size: 1rem;
+        color: var(--gold-color);
+        white-space: nowrap;
+      }
+
+      /* Order Summary Rows */
+      .order-summary-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        font-size: 1rem;
+        font-weight: 500;
+      }
+
+      .order-summary-row:last-child {
+        border-bottom: none;
+      }
+
+      .order-summary-total {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+        padding: 20px;
+        background: var(--gradient-gold);
+        color: white;
+        border-radius: 15px;
+        font-weight: 700;
+        font-size: 1.2rem;
+        box-shadow: 0 8px 25px rgba(255, 193, 7, 0.3);
+      }
+
+      /* Promo Code Section */
+      .promo-section {
+        background: linear-gradient(135deg, var(--light-gold) 0%, #ffffff 100%);
+        border-radius: 15px;
+        padding: 25px;
+        margin: 25px 0;
+        border: 2px solid rgba(255, 193, 7, 0.2);
+      }
+
+      .promo-section h6 {
+        color: #333;
+        font-weight: 600;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .promo-section h6 i {
+        color: var(--gold-color);
+      }
+
+      .promo-input {
+        border: 2px solid #e9ecef;
+        border-radius: 25px;
+        padding: 12px 20px;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+      }
+
+      .promo-input:focus {
+        border-color: var(--gold-color);
+        box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.25);
+      }
+
+      .promo-btn {
+        background: var(--gradient-gold);
+        border: none;
+        border-radius: 25px;
+        padding: 12px 25px;
+        color: white;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 3px 10px rgba(255, 193, 7, 0.3);
+      }
+
+      .promo-btn:hover {
+        background: var(--gradient-dark);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Payment Methods */
+      .payment-method-option {
+        margin-bottom: 20px;
+      }
+
+      .payment-method-option label {
+        display: flex;
+        align-items: center;
+        padding: 20px;
+        border: 2px solid #e9ecef;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+        font-weight: 600;
+        color: #333;
+      }
+
+      .payment-method-option label:hover {
+        border-color: var(--gold-color);
+        background: linear-gradient(135deg, var(--light-gold) 0%, #ffffff 100%);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-light);
+      }
+
+      .payment-method-option input[type="radio"]:checked + label {
+        border-color: var(--gold-color);
+        background: var(--gradient-gold);
+        color: white;
+        box-shadow: 0 8px 25px rgba(255, 193, 7, 0.3);
+      }
+
+      .payment-method-icon {
+        margin-right: 15px;
+        height: 30px;
+        filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.1));
+      }
+
+      .payment-card-details {
+        padding: 25px;
+        background: linear-gradient(135deg, var(--light-gold) 0%, #ffffff 100%);
+        border-radius: 15px;
+        margin-top: 20px;
+        border: 2px solid rgba(255, 193, 7, 0.2);
+      }
+
+      /* Premium Buttons */
+      .place-order-btn {
+        background: var(--gradient-gold);
+        border: none;
+        color: white;
+        font-weight: 700;
+        font-size: 1.1rem;
+        padding: 18px 40px;
+        border-radius: 25px;
+        margin-top: 25px;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 25px rgba(255, 193, 7, 0.4);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .place-order-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        transition: left 0.5s ease;
+      }
+
+      .place-order-btn:hover {
+        background: var(--gradient-dark);
+        transform: translateY(-3px);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+        color: white;
+      }
+
+      .place-order-btn:hover::before {
+        left: 100%;
+      }
+
+      .secure-checkout-badge {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px;
+        font-size: 0.9rem;
+        color: #666;
+        font-weight: 500;
+      }
+
+      .secure-checkout-badge i {
+        margin-right: 8px;
+        color: #28a745;
+        font-size: 1.1rem;
+      }
+
+      /* Billing Address Toggle */
+      .billing-address-section {
+        background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+        border-radius: 15px;
+        padding: 30px;
+        border: 2px solid #e9ecef;
+        margin-top: 20px;
+      }
+
+      /* Additional Notes */
+      textarea.form-control {
+        min-height: 120px;
+        resize: vertical;
+      }
+
+      /* Mobile Responsive */
+      @media (max-width: 991.98px) {
+        .hero-title {
+          font-size: 2.5rem;
+        }
+        
+        .order-summary-card {
+          position: static;
+          margin-top: 40px;
+        }
+        
+        .checkout-form {
+          padding: 30px 20px;
+        }
+      }
+
+      @media (max-width: 767.98px) {
+        .hero-title {
+          font-size: 2rem;
+        }
+        
+        .hero-subtitle {
+          font-size: 1rem;
+        }
+        
+        .checkout-hero {
+          padding: 60px 0 40px;
+          margin-bottom: 40px;
+        }
+        
+        .checkout-form {
+          border-radius: 20px;
+          padding: 25px 15px;
+        }
+        
+        .order-summary-card {
+          border-radius: 20px;
+          padding: 25px 20px;
+        }
+        
+        .form-section-title {
+          font-size: 1.2rem;
+        }
+        
+        .cart-item-mini {
+          flex-direction: column;
+          text-align: center;
+          padding: 20px 15px;
+        }
+        
+        .cart-item-mini-image {
+          margin-right: 0;
+          margin-bottom: 10px;
+        }
+      }
+
+      @media (max-width: 575.98px) {
+        .hero-title {
+          font-size: 1.8rem;
+        }
+        
+        .hero-breadcrumb {
+          flex-direction: column;
+          gap: 8px;
+        }
+        
+        .form-control, .form-select {
+          padding: 12px 15px;
+        }
+      }
+
+      /* Animation Classes */
+      .fade-in-up {
+        animation: fadeInUp 0.6s ease forwards;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .slide-in-right {
+        animation: slideInRight 0.6s ease forwards;
+      }
+
+      @keyframes slideInRight {
+        from {
+          opacity: 0;
+          transform: translateX(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      /* Loading States */
+      .btn-loading {
+        position: relative;
+        color: transparent !important;
+      }
+
+      .btn-loading::after {
+        content: '';
+        position: absolute;
         width: 20px;
         height: 20px;
-        background-color: var(--gold-color);
-        color: white;
-        font-size: 0.7rem;
-        font-weight: bold;
+        top: 50%;
+        left: 50%;
+        margin-left: -10px;
+        margin-top: -10px;
+        border: 2px solid #ffffff;
         border-radius: 50%;
-        margin-left: 5px;
+        border-top-color: transparent;
+        animation: spin 1s linear infinite;
       }
-      
-      @media (max-width: 767.98px) {
-        .order-summary-card {
-          margin-top: 30px;
-          position: static;
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
         }
       }
     </style>
   </head>
   <body>
-      <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
       <symbol id="search" xmlns="http://www.w3.org/2000/symbolsvg" viewBox="0 0 24 24">
         <path fill="currentColor" fill-rule="evenodd"
           d="M11.5 2.75a8.75 8.75 0 1 0 0 17.5a8.75 8.75 0 0 0 0-17.5M1.25 11.5c0-5.66 4.59-10.25 10.25-10.25S21.75 5.84 21.75 11.5c0 2.56-.939 4.902-2.491 6.698l3.271 3.272a.75.75 0 1 1-1.06 1.06l-3.272-3.271A10.21 10.21 0 0 1 11.5 21.75c-5.66 0-10.25-4.59-10.25-10.25"
@@ -694,287 +1205,293 @@
       </nav>
 
     </header>
-    
-    <main class="checkout-section">
+
+    <!-- Premium Hero Section -->
+    <section class="checkout-hero">
       <div class="container">
-        <!-- Breadcrumbs -->
-        <nav aria-label="breadcrumb" class="mb-4">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-            <li class="breadcrumb-item"><a href="cart.html">Cart</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Checkout</li>
-          </ol>
-        </nav>
-        
-        <h1 class="mb-4">Checkout</h1>
-        
+        <div class="hero-content fade-in-up">
+          <h1 class="hero-title">Secure Checkout</h1>
+          <p class="hero-subtitle">Complete your premium hookah experience</p>
+          <div class="hero-breadcrumb">
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+            <span class="separator"><i class="fas fa-chevron-right"></i></span>
+            <a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a>
+            <span class="separator"><i class="fas fa-chevron-right"></i></span>
+            <span><i class="fas fa-credit-card"></i> Checkout</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Checkout Content -->
+    <div class="checkout-container">
+      <div class="container">
         <div class="row">
           <!-- Left Column - Forms -->
           <div class="col-lg-8">
-            <!-- Contact Information -->
-            <div class="form-section">
-              <h2 class="form-section-title">Contact Information</h2>
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label for="email" class="form-label required-field">Email Address</label>
-                  <input type="email" class="form-control" id="email" placeholder="your@email.com" required>
-                </div>
-                <div class="col-md-6">
-                  <label for="phone" class="form-label required-field">Phone Number</label>
-                  <input type="tel" class="form-control" id="phone" placeholder="Your phone number" required>
-                </div>
-              </div>
-            </div>
-            
-            <!-- Shipping Address -->
-            <div class="form-section">
-              <h2 class="form-section-title">Shipping Address</h2>
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label for="firstName" class="form-label required-field">First Name</label>
-                  <input type="text" class="form-control" id="firstName" required>
-                </div>
-                <div class="col-md-6">
-                  <label for="lastName" class="form-label required-field">Last Name</label>
-                  <input type="text" class="form-control" id="lastName" required>
-                </div>
-                <div class="col-12">
-                  <label for="address1" class="form-label required-field">Address Line 1</label>
-                  <input type="text" class="form-control" id="address1" placeholder="Street address, P.O. box" required>
-                </div>
-                <div class="col-12">
-                  <label for="address2" class="form-label">Address Line 2 (Optional)</label>
-                  <input type="text" class="form-control" id="address2" placeholder="Apartment, suite, unit, building, floor, etc.">
-                </div>
-                <div class="col-md-6">
-                  <label for="country" class="form-label required-field">Country</label>
-                  <select class="form-select" id="country" required>
-                    <option value="">Choose...</option>
-                    <option selected>United States</option>
-                    <option>Canada</option>
-                    <option>India</option>
-                    <option>United Kingdom</option>
-                    <option>Australia</option>
-                    <!-- Additional countries would go here -->
-                  </select>
-                </div>
-                <div class="col-md-6">
-                  <label for="state" class="form-label required-field">State/Province</label>
-                  <select class="form-select" id="state" required>
-                    <option value="">Choose...</option>
-                    <option>California</option>
-                    <option>New York</option>
-                    <option>Texas</option>
-                    <option>Florida</option>
-                    <option>Illinois</option>
-                    <!-- Additional states would go here -->
-                  </select>
-                </div>
-                <div class="col-md-6">
-                  <label for="city" class="form-label required-field">City</label>
-                  <input type="text" class="form-control" id="city" required>
-                </div>
-                <div class="col-md-6">
-                  <label for="zipCode" class="form-label required-field">ZIP/Postal Code</label>
-                  <input type="text" class="form-control" id="zipCode" required>
-                </div>
-                <div class="col-12">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="sameAsBilling">
-                    <label class="form-check-label" for="sameAsBilling">
-                      Billing address is the same as shipping address
-                    </label>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <!-- Billing Address (Hidden by Default) -->
-            <div class="form-section" id="billing-address-section" style="display: none;">
-              <h2 class="form-section-title">Billing Address</h2>
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label for="billingFirstName" class="form-label required-field">First Name</label>
-                  <input type="text" class="form-control" id="billingFirstName">
-                </div>
-                <div class="col-md-6">
-                  <label for="billingLastName" class="form-label required-field">Last Name</label>
-                  <input type="text" class="form-control" id="billingLastName">
-                </div>
-                <div class="col-12">
-                  <label for="billingAddress1" class="form-label required-field">Address Line 1</label>
-                  <input type="text" class="form-control" id="billingAddress1" placeholder="Street address, P.O. box">
-                </div>
-                <div class="col-12">
-                  <label for="billingAddress2" class="form-label">Address Line 2 (Optional)</label>
-                  <input type="text" class="form-control" id="billingAddress2" placeholder="Apartment, suite, unit, building, floor, etc.">
-                </div>
-                <div class="col-md-6">
-                  <label for="billingCountry" class="form-label required-field">Country</label>
-                  <select class="form-select" id="billingCountry">
-                    <option value="">Choose...</option>
-                    <option selected>United States</option>
-                    <option>Canada</option>
-                    <option>India</option>
-                    <option>United Kingdom</option>
-                    <option>Australia</option>
-                    <!-- Additional countries would go here -->
-                  </select>
-                </div>
-                <div class="col-md-6">
-                  <label for="billingState" class="form-label required-field">State/Province</label>
-                  <select class="form-select" id="billingState">
-                    <option value="">Choose...</option>
-                    <option>California</option>
-                    <option>New York</option>
-                    <option>Texas</option>
-                    <option>Florida</option>
-                    <option>Illinois</option>
-                    <!-- Additional states would go here -->
-                  </select>
-                </div>
-                <div class="col-md-6">
-                  <label for="billingCity" class="form-label required-field">City</label>
-                  <input type="text" class="form-control" id="billingCity">
-                </div>
-                <div class="col-md-6">
-                  <label for="billingZipCode" class="form-label required-field">ZIP/Postal Code</label>
-                  <input type="text" class="form-control" id="billingZipCode">
-                </div>
-              </div>
-            </div>
-            
-            <!-- Shipping Method -->
-            <!-- <div class="form-section">
-              <h2 class="form-section-title">Shipping Method</h2>
-              <div class="form-check mb-3">
-                <input class="form-check-input" type="radio" name="shippingMethod" id="standardShipping" checked>
-                <label class="form-check-label" for="standardShipping">
-                  <div class="d-flex justify-content-between align-items-center w-100">
-                    <div>
-                      <strong>Standard Shipping</strong>
-                      <p class="mb-0 text-muted">Estimated delivery: 3-5 business days</p>
-                    </div>
-                    <span>$15.00</span>
-                  </div>
-                </label>
-              </div>
-              <div class="form-check mb-3">
-                <input class="form-check-input" type="radio" name="shippingMethod" id="expressShipping">
-                <label class="form-check-label" for="expressShipping">
-                  <div class="d-flex justify-content-between align-items-center w-100">
-                    <div>
-                      <strong>Express Shipping</strong>
-                      <p class="mb-0 text-muted">Estimated delivery: 1-2 business days</p>
-                    </div>
-                    <span>$25.00</span>
-                  </div>
-                </label>
-              </div>
-            </div> -->
-            
-            <!-- Promo Code -->
-            <div class="form-section promo-box">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Promo code or gift card">
-                <button class="btn btn-outline-secondary" type="button">Apply</button>
-              </div>
-            </div>
-            
-            <!-- Payment Method -->
-            <div class="form-section">
-              <h2 class="form-section-title">Payment Method</h2>
+            <div class="checkout-form fade-in-up">
               
-              <div class="payment-method-option">
-                <input type="radio" class="btn-check" name="paymentMethod" id="creditCard" autocomplete="off" checked>
-                <label class="btn" for="creditCard">
-                  <img src="images/credit-card.png" alt="Credit Card" class="payment-method-icon">
-                  Credit or Debit Card
-                </label>
-              </div>
-              
-              <div id="creditCardDetails" class="payment-card-details">
+              <!-- Contact Information -->
+              <div class="form-section">
+                <h2 class="form-section-title">
+                  <i class="fas fa-envelope"></i>
+                  Contact Information
+                </h2>
                 <div class="row g-3">
-                  <div class="col-md-12">
-                    <label for="cardName" class="form-label required-field">Name on Card</label>
-                    <input type="text" class="form-control" id="cardName" required>
-                  </div>
-                  <div class="col-md-12">
-                    <label for="cardNumber" class="form-label required-field">Card Number</label>
-                    <input type="text" class="form-control" id="cardNumber" placeholder="XXXX XXXX XXXX XXXX" required>
+                  <div class="col-md-6">
+                    <label for="email" class="form-label required-field">Email Address</label>
+                    <input type="email" class="form-control" id="email" placeholder="your@email.com" required>
                   </div>
                   <div class="col-md-6">
-                    <label for="expiryDate" class="form-label required-field">Expiry Date</label>
-                    <input type="text" class="form-control" id="expiryDate" placeholder="MM/YY" required>
-                  </div>
-                  <div class="col-md-6">
-                    <label for="cvv" class="form-label required-field">CVV</label>
-                    <input type="text" class="form-control" id="cvv" placeholder="XXX" required>
+                    <label for="phone" class="form-label required-field">Phone Number</label>
+                    <input type="tel" class="form-control" id="phone" placeholder="Your phone number" required>
                   </div>
                 </div>
               </div>
-              
-              <div class="payment-method-option">
-                <input type="radio" class="btn-check" name="paymentMethod" id="paypal" autocomplete="off">
-                <label class="btn" for="paypal">
-                  <img src="images/paypal.jpg" alt="PayPal" class="payment-method-icon">
-                  PayPal
-                </label>
+
+              <!-- Shipping Address -->
+              <div class="form-section">
+                <h2 class="form-section-title">
+                  <i class="fas fa-shipping-fast"></i>
+                  Shipping Address
+                </h2>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label for="firstName" class="form-label required-field">First Name</label>
+                    <input type="text" class="form-control" id="firstName" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="lastName" class="form-label required-field">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" required>
+                  </div>
+                  <div class="col-12">
+                    <label for="address1" class="form-label required-field">Address Line 1</label>
+                    <input type="text" class="form-control" id="address1" placeholder="Street address, P.O. box" required>
+                  </div>
+                  <div class="col-12">
+                    <label for="address2" class="form-label">Address Line 2 (Optional)</label>
+                    <input type="text" class="form-control" id="address2" placeholder="Apartment, suite, unit, building, floor, etc.">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="country" class="form-label required-field">Country</label>
+                    <select class="form-select" id="country" required>
+                      <option value="">Choose...</option>
+                      <option selected>United States</option>
+                      <option>Canada</option>
+                      <option>India</option>
+                      <option>United Kingdom</option>
+                      <option>Australia</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="state" class="form-label required-field">State/Province</label>
+                    <select class="form-select" id="state" required>
+                      <option value="">Choose...</option>
+                      <option>California</option>
+                      <option>New York</option>
+                      <option>Texas</option>
+                      <option>Florida</option>
+                      <option>Illinois</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="city" class="form-label required-field">City</label>
+                    <input type="text" class="form-control" id="city" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="zipCode" class="form-label required-field">ZIP/Postal Code</label>
+                    <input type="text" class="form-control" id="zipCode" required>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="sameAsBilling" checked>
+                      <label class="form-check-label" for="sameAsBilling">
+                        <i class="fas fa-check-circle"></i>
+                        Billing address is the same as shipping address
+                      </label>
+                    </div>
+                  </div>
+                </div>
               </div>
-              
-              <div class="payment-method-option">
-                <input type="radio" class="btn-check" name="paymentMethod" id="googlePay" autocomplete="off">
-                <label class="btn" for="googlePay">
-                  <img src="images/googlepay.png" alt="Google Pay" class="payment-method-icon">
-                  Google Pay
-                </label>
+
+              <!-- Billing Address (Hidden by Default) -->
+              <div class="form-section billing-address-section" id="billing-address-section" style="display: none;">
+                <h2 class="form-section-title">
+                  <i class="fas fa-receipt"></i>
+                  Billing Address
+                </h2>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label for="billingFirstName" class="form-label required-field">First Name</label>
+                    <input type="text" class="form-control" id="billingFirstName">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="billingLastName" class="form-label required-field">Last Name</label>
+                    <input type="text" class="form-control" id="billingLastName">
+                  </div>
+                  <div class="col-12">
+                    <label for="billingAddress1" class="form-label required-field">Address Line 1</label>
+                    <input type="text" class="form-control" id="billingAddress1" placeholder="Street address, P.O. box">
+                  </div>
+                  <div class="col-12">
+                    <label for="billingAddress2" class="form-label">Address Line 2 (Optional)</label>
+                    <input type="text" class="form-control" id="billingAddress2" placeholder="Apartment, suite, unit, building, floor, etc.">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="billingCountry" class="form-label required-field">Country</label>
+                    <select class="form-select" id="billingCountry">
+                      <option value="">Choose...</option>
+                      <option selected>United States</option>
+                      <option>Canada</option>
+                      <option>India</option>
+                      <option>United Kingdom</option>
+                      <option>Australia</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="billingState" class="form-label required-field">State/Province</label>
+                    <select class="form-select" id="billingState">
+                      <option value="">Choose...</option>
+                      <option>California</option>
+                      <option>New York</option>
+                      <option>Texas</option>
+                      <option>Florida</option>
+                      <option>Illinois</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="billingCity" class="form-label required-field">City</label>
+                    <input type="text" class="form-control" id="billingCity">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="billingZipCode" class="form-label required-field">ZIP/Postal Code</label>
+                    <input type="text" class="form-control" id="billingZipCode">
+                  </div>
+                </div>
               </div>
-              
-              <div class="payment-method-option">
-                <input type="radio" class="btn-check" name="paymentMethod" id="applePay" autocomplete="off">
-                <label class="btn" for="applePay">
-                  <img src="images/applepay.png" alt="Apple Pay" class="payment-method-icon">
-                  Apple Pay
-                </label>
+
+              <!-- Payment Method -->
+              <div class="form-section">
+                <h2 class="form-section-title">
+                  <i class="fas fa-credit-card"></i>
+                  Payment Method
+                </h2>
+                
+                <div class="payment-method-option">
+                  <input type="radio" class="btn-check" name="paymentMethod" id="creditCard" autocomplete="off" checked>
+                  <label class="btn" for="creditCard">
+                    <img src="images/credit-card.png" alt="Credit Card" class="payment-method-icon">
+                    <span><i class="fas fa-credit-card me-2"></i>Credit or Debit Card</span>
+                  </label>
+                </div>
+                
+                <div id="creditCardDetails" class="payment-card-details">
+                  <div class="row g-3">
+                    <div class="col-md-12">
+                      <label for="cardName" class="form-label required-field">Name on Card</label>
+                      <input type="text" class="form-control" id="cardName" required>
+                    </div>
+                    <div class="col-md-12">
+                      <label for="cardNumber" class="form-label required-field">Card Number</label>
+                      <input type="text" class="form-control" id="cardNumber" placeholder="XXXX XXXX XXXX XXXX" required>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="expiryDate" class="form-label required-field">Expiry Date</label>
+                      <input type="text" class="form-control" id="expiryDate" placeholder="MM/YY" required>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="cvv" class="form-label required-field">CVV</label>
+                      <input type="text" class="form-control" id="cvv" placeholder="XXX" required>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="payment-method-option">
+                  <input type="radio" class="btn-check" name="paymentMethod" id="paypal" autocomplete="off">
+                  <label class="btn" for="paypal">
+                    <img src="images/paypal.jpg" alt="PayPal" class="payment-method-icon">
+                    <span><i class="fab fa-paypal me-2"></i>PayPal</span>
+                  </label>
+                </div>
+                
+                <div class="payment-method-option">
+                  <input type="radio" class="btn-check" name="paymentMethod" id="googlePay" autocomplete="off">
+                  <label class="btn" for="googlePay">
+                    <img src="images/googlepay.png" alt="Google Pay" class="payment-method-icon">
+                    <span><i class="fab fa-google-pay me-2"></i>Google Pay</span>
+                  </label>
+                </div>
+                
+                <div class="payment-method-option">
+                  <input type="radio" class="btn-check" name="paymentMethod" id="applePay" autocomplete="off">
+                  <label class="btn" for="applePay">
+                    <img src="images/applepay.png" alt="Apple Pay" class="payment-method-icon">
+                    <span><i class="fab fa-apple-pay me-2"></i>Apple Pay</span>
+                  </label>
+                </div>
               </div>
-            </div>
-            
-            <!-- Additional Notes -->
-            <div class="form-section">
-              <h2 class="form-section-title">Additional Notes (Optional)</h2>
-              <textarea class="form-control" id="orderNotes" rows="4" placeholder="Any special instructions or requests regarding your order..."></textarea>
-            </div>
-            
-            <!-- Terms & Conditions -->
-            <div class="form-check mt-4">
-              <input class="form-check-input" type="checkbox" id="termsCheck" required>
-              <label class="form-check-label" for="termsCheck">
-                I agree to the <a href="#">Terms and Conditions</a>, <a href="#">Privacy Policy</a>, and <a href="#">Return Policy</a>
-              </label>
-            </div>
-            
-            <div class="form-check mt-2">
-              <input class="form-check-input" type="checkbox" id="ageCheck" required>
-              <label class="form-check-label" for="ageCheck">
-                I confirm that I am at least 18 years of age
-              </label>
-            </div>
-            
-            <div class="mt-4 d-md-none">
-              <button class="btn place-order-btn w-100" type="submit"  >Place Order</button>
-              <div class="secure-checkout-badge">
-                <i class="fas fa-lock"></i> Secure Checkout
+
+              <!-- Additional Notes -->
+              <div class="form-section">
+                <h2 class="form-section-title">
+                  <i class="fas fa-sticky-note"></i>
+                  Additional Notes (Optional)
+                </h2>
+                <textarea class="form-control" id="orderNotes" rows="4" placeholder="Any special instructions or requests regarding your order..."></textarea>
+              </div>
+
+              <!-- Terms & Conditions -->
+              <div class="form-section">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="termsCheck" required>
+                  <label class="form-check-label" for="termsCheck">
+                    <i class="fas fa-file-contract me-2"></i>
+                    I agree to the <a href="#" target="_blank">Terms and Conditions</a>, <a href="#" target="_blank">Privacy Policy</a>, and <a href="#" target="_blank">Return Policy</a>
+                  </label>
+                </div>
+                
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="ageCheck" required>
+                  <label class="form-check-label" for="ageCheck">
+                    <i class="fas fa-id-card me-2"></i>
+                    I confirm that I am at least 18 years of age
+                  </label>
+                </div>
+              </div>
+
+              <!-- Mobile Place Order Button -->
+              <div class="d-md-none">
+                <button class="btn place-order-btn w-100" type="submit" onclick="placeOrder()">
+                  <i class="fas fa-lock me-2"></i>Place Order Securely
+                </button>
+                <div class="secure-checkout-badge">
+                  <i class="fas fa-shield-alt"></i> 256-bit SSL Secure Checkout
+                </div>
               </div>
             </div>
           </div>
-          
+
           <!-- Right Column - Order Summary -->
           <div class="col-lg-4">
-            <div class="order-summary-card">
-              <h2 class="order-summary-title">Order Summary <span class="cart-quantity-badge">3</span></h2>
+            <div class="order-summary-card slide-in-right">
+              <h2 class="order-summary-title">
+                Order Summary 
+                <span class="cart-quantity-badge">3</span>
+              </h2>
               
+              <!-- Promo Code Section -->
+              <div class="promo-section">
+                <h6><i class="fas fa-tags"></i>Have a promo code?</h6>
+                <div class="input-group">
+                  <input type="text" class="form-control promo-input" placeholder="Enter promo code">
+                  <button class="btn promo-btn" type="button">
+                    <i class="fas fa-percentage me-1"></i>Apply
+                  </button>
+                </div>
+              </div>
+
+              <!-- Cart Items -->
               <div class="cart-items-mini">
-                <!-- Item 1 -->
                 <div class="cart-item-mini">
                   <img src="images/landing/hookah_product.jpg" alt="Premium Glass Hookah Set" class="cart-item-mini-image">
                   <div class="cart-item-mini-details">
@@ -984,7 +1501,6 @@
                   <div class="cart-item-mini-price">$870.00</div>
                 </div>
                 
-                <!-- Item 2 -->
                 <div class="cart-item-mini">
                   <img src="images/landing/landing7.jpg" alt="Al Fakher Double Apple" class="cart-item-mini-image">
                   <div class="cart-item-mini-details">
@@ -994,7 +1510,6 @@
                   <div class="cart-item-mini-price">$49.98</div>
                 </div>
                 
-                <!-- Item 3 -->
                 <div class="cart-item-mini">
                   <img src="images/landing/landing8.jpg" alt="Premium Coconut Charcoal" class="cart-item-mini-image">
                   <div class="cart-item-mini-details">
@@ -1004,43 +1519,57 @@
                   <div class="cart-item-mini-price">$18.99</div>
                 </div>
               </div>
-              
-              <hr>
-              
+
+              <!-- Order Summary Details -->
               <div class="order-summary-rows">
                 <div class="order-summary-row">
-                  <div>Subtotal</div>
-                  <div>$938.97</div>
+                  <span><i class="fas fa-shopping-bag me-2"></i>Subtotal</span>
+                  <span>$938.97</span>
                 </div>
                 <div class="order-summary-row">
-                  <div>Shipping</div>
-                  <div>$15.00</div>
+                  <span><i class="fas fa-shipping-fast me-2"></i>Shipping</span>
+                  <span>$15.00</span>
                 </div>
                 <div class="order-summary-row">
-                  <div>Tax</div>
-                  <div>$47.00</div>
+                  <span><i class="fas fa-receipt me-2"></i>Tax</span>
+                  <span>$47.00</span>
                 </div>
                 <div class="order-summary-row">
-                  <div>Discount</div>
-                  <div>$0.00</div>
-                </div>
-                <div class="order-summary-total">
-                  <div>Total</div>
-                  <div>$1,000.97</div>
+                  <span><i class="fas fa-tags me-2"></i>Discount</span>
+                  <span>$0.00</span>
                 </div>
               </div>
+
+              <div class="order-summary-total">
+                <span><i class="fas fa-dollar-sign me-2"></i>Total</span>
+                <span>$1,000.97</span>
+              </div>
+
+              <!-- Desktop Place Order Button -->
+              <button class="btn place-order-btn w-100 d-none d-md-block" type="submit" onclick="placeOrder()">
+                <i class="fas fa-lock me-2"></i>Place Order Securely
+              </button>
               
-                <button class="btn place-order-btn w-100 d-none d-md-block" type="submit" onclick="window.location.href='confirm.html'; return false;">Place Order</button>
               <div class="secure-checkout-badge d-none d-md-flex">
-                <i class="fas fa-lock"></i> Secure Checkout
+                <i class="fas fa-shield-alt"></i> 256-bit SSL Secure Checkout
+              </div>
+
+              <!-- Payment Methods Display -->
+              <div class="text-center mt-4">
+                <small class="text-muted d-block mb-2">Secure Payment Options:</small>
+                <div class="d-flex justify-content-center gap-2">
+                  <img src="images/visa.jpg" alt="Visa" height="25" style="border-radius: 4px;">
+                  <img src="images/mastercard.jpg" alt="Mastercard" height="25" style="border-radius: 4px;">
+                  <img src="images/paypal.jpg" alt="PayPal" height="25" style="border-radius: 4px;">
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </main>
+    </div>
 
-                      <footer id="footer" class="padding-large bg-black">
+           <footer id="footer" class="padding-large bg-black">
           <div class="container">
             <div class="row">
               <div class="footer-top-area">
@@ -1122,65 +1651,124 @@
           </div>
         </div>
 
+    <!-- JavaScript -->
     <script src="js/jquery-1.11.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
     <script>
-      // Toggle billing address section based on checkbox
+      // Enhanced checkout functionality
+      function placeOrder() {
+        const btn = event.target;
+        const originalText = btn.innerHTML;
+        
+        // Validate form
+        if (!validateForm()) {
+          return;
+        }
+        
+        // Show loading state
+        btn.classList.add('btn-loading');
+        btn.disabled = true;
+        
+        // Simulate API call
+        setTimeout(() => {
+          btn.classList.remove('btn-loading');
+          btn.innerHTML = '<i class="fas fa-check me-2"></i>Order Placed!';
+          btn.style.background = 'linear-gradient(135deg, #28a745, #20c997)';
+          
+          setTimeout(() => {
+            window.location.href = 'confirm.html';
+          }, 1500);
+        }, 2000);
+      }
+      
+      function validateForm() {
+        const requiredFields = document.querySelectorAll('[required]');
+        let isValid = true;
+        
+        requiredFields.forEach(field => {
+          if (!field.value.trim()) {
+            field.classList.add('is-invalid');
+            isValid = false;
+            
+            // Add shake animation
+            field.style.animation = 'shake 0.5s ease-in-out';
+            setTimeout(() => {
+              field.style.animation = '';
+            }, 500);
+          } else {
+            field.classList.remove('is-invalid');
+          }
+        });
+        
+        if (!isValid) {
+          showNotification('Please fill in all required fields', 'error');
+          scrollToFirstError();
+        }
+        
+        return isValid;
+      }
+      
+      function scrollToFirstError() {
+        const firstError = document.querySelector('.is-invalid');
+        if (firstError) {
+          firstError.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'center' 
+          });
+          firstError.focus();
+        }
+      }
+      
+      function showNotification(message, type = 'info') {
+        const notification = document.createElement('div');
+        notification.className = `alert alert-${type === 'error' ? 'danger' : 'success'} position-fixed`;
+        notification.style.cssText = `
+          top: 20px; 
+          right: 20px; 
+          z-index: 9999; 
+          min-width: 300px;
+          border-radius: 15px;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+          border: none;
+        `;
+        notification.innerHTML = `
+          <i class="fas fa-${type === 'error' ? 'exclamation-triangle' : 'check-circle'} me-2"></i>
+          ${message}
+          <button type="button" class="btn-close" onclick="this.parentElement.remove()"></button>
+        `;
+        
+        document.body.appendChild(notification);
+        
+        // Animate in
+        notification.style.transform = 'translateX(100%)';
+        setTimeout(() => {
+          notification.style.transition = 'transform 0.3s ease';
+          notification.style.transform = 'translateX(0)';
+        }, 100);
+        
+        // Auto remove
+        setTimeout(() => {
+          if (notification.parentElement) {
+            notification.style.transform = 'translateX(100%)';
+            setTimeout(() => notification.remove(), 300);
+          }
+        }, 4000);
+      }
+      
+      // Toggle billing address
       document.getElementById('sameAsBilling').addEventListener('change', function() {
         const billingSection = document.getElementById('billing-address-section');
         if (this.checked) {
           billingSection.style.display = 'none';
         } else {
           billingSection.style.display = 'block';
+          billingSection.scrollIntoView({ behavior: 'smooth' });
         }
       });
       
-      // Simple form validation on submit (can be expanded)
-      document.querySelector('.place-order-btn').addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        // Check required fields
-        const requiredFields = document.querySelectorAll('[required]');
-        let isValid = true;
-        
-        requiredFields.forEach(field => {
-          if (!field.value) {
-            field.classList.add('is-invalid');
-            isValid = false;
-          } else {
-            field.classList.remove('is-invalid');
-          }
-        });
-        
-        // Check terms and age verification
-        const termsCheck = document.getElementById('termsCheck');
-        const ageCheck = document.getElementById('ageCheck');
-        
-        if (!termsCheck.checked) {
-          termsCheck.classList.add('is-invalid');
-          isValid = false;
-        } else {
-          termsCheck.classList.remove('is-invalid');
-        }
-        
-        if (!ageCheck.checked) {
-          ageCheck.classList.add('is-invalid');
-          isValid = false;
-        } else {
-          ageCheck.classList.remove('is-invalid');
-        }
-        
-        if (isValid) {
-          // Submit the form or redirect to confirmation page
-          alert('Order placed successfully! Redirecting to confirmation page...');
-          // window.location.href = 'order-confirmation.html';
-        } else {
-          alert('Please fill in all required fields and agree to the terms.');
-        }
-      });
-      
-      // Toggle payment method details
+      // Payment method toggle
       document.querySelectorAll('input[name="paymentMethod"]').forEach(radio => {
         radio.addEventListener('change', function() {
           const creditCardDetails = document.getElementById('creditCardDetails');
@@ -1192,15 +1780,96 @@
         });
       });
       
-      document.addEventListener('DOMContentLoaded', function() {
-        // Hide preloader when page is fully loaded
-        const preloader = document.getElementById('preloader');
-        if (preloader) {
-          preloader.style.display = 'none';
+      // Promo code functionality
+      document.querySelector('.promo-btn').addEventListener('click', function() {
+        const promoInput = document.querySelector('.promo-input');
+        const promoCode = promoInput.value.trim();
+        
+        if (!promoCode) {
+          showNotification('Please enter a promo code', 'error');
+          return;
         }
         
+        // Simulate promo code validation
+        const btn = this;
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+        btn.disabled = true;
         
+        setTimeout(() => {
+          if (promoCode.toLowerCase() === 'save10') {
+            showNotification('Promo code applied! 10% discount added.', 'success');
+            // Update totals here
+          } else {
+            showNotification('Invalid promo code', 'error');
+          }
+          btn.innerHTML = originalText;
+          btn.disabled = false;
+        }, 1500);
       });
+      
+      // Form field enhancements
+      document.querySelectorAll('.form-control, .form-select').forEach(input => {
+        input.addEventListener('focus', function() {
+          this.parentElement.classList.add('focused');
+        });
+        
+        input.addEventListener('blur', function() {
+          this.parentElement.classList.remove('focused');
+          if (this.value) {
+            this.classList.remove('is-invalid');
+          }
+        });
+      });
+      
+      // Card number formatting
+      document.getElementById('cardNumber').addEventListener('input', function() {
+        let value = this.value.replace(/\s/g, '').replace(/[^0-9]/gi, '');
+        let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+        this.value = formattedValue;
+      });
+      
+      // Expiry date formatting
+      document.getElementById('expiryDate').addEventListener('input', function() {
+        let value = this.value.replace(/\D/g, '');
+        if (value.length >= 2) {
+          value = value.substring(0,2) + '/' + value.substring(2,4);
+        }
+        this.value = value;
+      });
+      
+      // Initialize page
+      document.addEventListener('DOMContentLoaded', function() {
+        // Hide preloader
+        const preloader = document.getElementById('preloader');
+        if (preloader) {
+          setTimeout(() => {
+            preloader.style.opacity = '0';
+            setTimeout(() => {
+              preloader.style.display = 'none';
+            }, 300);
+          }, 500);
+        }
+        
+        // Add stagger animation to form sections
+        const formSections = document.querySelectorAll('.form-section');
+        formSections.forEach((section, index) => {
+          setTimeout(() => {
+            section.classList.add('fade-in-up');
+          }, index * 100);
+        });
+      });
+      
+      // Add shake animation for validation errors
+      const style = document.createElement('style');
+      style.textContent = `
+        @keyframes shake {
+          0%, 100% { transform: translateX(0); }
+          25% { transform: translateX(-5px); }
+          75% { transform: translateX(5px); }
+        }
+      `;
+      document.head.appendChild(style);
     </script>
   </body>
 </html>
