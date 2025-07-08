@@ -225,6 +225,53 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+// Add to your script.js
+document.addEventListener('DOMContentLoaded', function() {
+    // Animate elements on page load
+    document.querySelectorAll('.animate-fade-in').forEach(element => {
+        element.classList.add('show');
+    });
+    
+    // Enhanced product card hover effects
+    const productCards = document.querySelectorAll('#best-selling-items .card');
+    productCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.querySelector('.image-container img').style.transform = 'scale(1.1)';
+        });
+        card.addEventListener('mouseleave', function() {
+            this.querySelector('.image-container img').style.transform = 'scale(1)';
+        });
+    });
+    
+    // Enhanced hero slider interactions
+    const mainSwiper = document.querySelector('.main-swiper').swiper;
+    mainSwiper.on('slideChangeTransitionStart', function() {
+        const activeSlide = this.slides[this.activeIndex];
+        const content = activeSlide.querySelector('.banner-content');
+        if (content) {
+            content.querySelectorAll('h2, p, .btn').forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(30px)';
+            });
+        }
+    });
+    
+    mainSwiper.on('slideChangeTransitionEnd', function() {
+        const activeSlide = this.slides[this.activeIndex];
+        const content = activeSlide.querySelector('.banner-content');
+        if (content) {
+            content.querySelectorAll('h2, p, .btn').forEach((element, index) => {
+                setTimeout(() => {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }, 100 * (index + 1));
+            });
+        }
+    });
+});
+
+
+
   window.addEventListener("load", function () {
     const preloader = document.getElementById("preloader");
     preloader.classList.add("hide-preloader");
