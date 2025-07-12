@@ -1522,42 +1522,42 @@ th{
 /* 4.3 Icon Box - Company Services
 /*----------------------------------------------*/
 .icon-box .icon-box-icon svg {
-  width: 33px;
-  height: 33px;
+  /* width: 33px;
+  height: 33px; */
   fill: var(--primary-color);
 }
 /* Enhanced service icon boxes */
 #company-services .icon-box {
-    background: white;
-    border-radius: 20px;
-    padding: 25px;
+    /* background: white; */
+    /* border-radius: 20px; */
+    /* padding: 25px; */
     transition: all 0.4s ease;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    /* box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); */
     height: 100%;
 }
 
 #company-services .icon-box:hover {
     transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1); */
 }
 
 #company-services .icon-box-icon {
-    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-    border-radius: 15px;
-    width: 70px;
+    /* background: linear-gradient(135deg, #f8f9fa, #e9ecef); */
+    /* border-radius: 15px; */
+    /* width: 70px;
     height: 70px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center; */
     transition: all 0.3s ease;
 }
 
 #company-services .icon-box:hover .icon-box-icon {
-    background: linear-gradient(135deg, var(--gold-color), #ffb400);
+    /* background: linear-gradient(135deg, var(--gold-color), #ffb400); */
 }
 
 #company-services .icon-box:hover svg {
-    fill: white;
+    /* fill: white; */
     transform: scale(1.1);
 }
 
@@ -1589,7 +1589,7 @@ th{
 }
 
 #company-services .icon-box-icon {
-    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    /* background: linear-gradient(135deg, #f8f9fa, #e9ecef); */
     border-radius: 15px;
     width: 70px;
     height: 70px;
@@ -1711,15 +1711,12 @@ th{
 }
 
 #best-selling-items .card .position-absolute {
-    background: linear-gradient(135deg, var(--gold-color), #ffb400);
-    border-radius: 15px;
-    box-shadow: 0 3px 10px rgba(255, 193, 7, 0.3);
-    font-weight: 600;
-    padding: 8px 16px;
-    top: 15px;
-    left: 15px;
-    z-index: 2;
-    transition: all 0.3s ease;
+  position: absolute !important;
+  top: 12px !important;
+  left: 12px !important;
+  z-index: 3 !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 #best-selling-items .card:hover .position-absolute {
@@ -1762,6 +1759,29 @@ th{
     background: linear-gradient(135deg, var(--gold-color), #ffb400) !important;
     border-radius: 15px !important;
     box-shadow: 0 3px 10px rgba(255, 193, 7, 0.3);
+}
+
+#best-selling-items .card .position-absolute p {
+  background: linear-gradient(135deg, var(--gold-color), #ffb400) !important;
+  font-size: 0.8rem !important;
+  font-weight: 600 !important;
+  color: white !important;
+  padding: 5px 12px !important;
+  border-radius: 12px !important;
+  margin: 0 !important;
+  box-shadow: 0 3px 8px rgba(255, 180, 0, 0.3) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  height: auto !important;
+  min-height: 24px !important;
+}
+
+/* Add a subtle animation on hover */
+#best-selling-items .card:hover .position-absolute p {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 5px 12px rgba(255, 180, 0, 0.4) !important;
 }
 
 /* For maintaining aspect ratio on responsive images */

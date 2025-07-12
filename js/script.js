@@ -270,6 +270,24 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+ document.addEventListener('DOMContentLoaded', function() {
+    // Select all discount badges in product cards
+    const discountBadges = document.querySelectorAll('#best-selling-items .card .position-absolute p');
+    
+    discountBadges.forEach(badge => {
+      // Remove any existing classes that might interfere with styling
+      badge.classList.remove('bg-primary', 'py-1', 'px-3', 'fs-6', 'text-white', 'rounded-2');
+      
+      // Add our custom class
+      badge.closest('.position-absolute').classList.add('discount-badge');
+      
+      // Make sure parent container has proper positioning
+      const cardContainer = badge.closest('.card');
+      if (cardContainer) {
+        cardContainer.style.position = 'relative';
+      }
+    });
+  });
 
 
   window.addEventListener("load", function () {
